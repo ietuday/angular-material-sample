@@ -1,0 +1,18 @@
+<div class="sidenav-container" fxLayout="column">
+  <div class="profile" fxLayoutAlign="center">
+    <img src="assets/images/noavatar.png">
+  </div>
+
+  <div fxFlex>
+    <div *ngFor="let menu of menuItems">
+      <a class="nav-item " fxLayout="row" fxLayoutAlign="start center" routerLinkActive="active" [routerLink]="menu.routeLink">
+            <span  class="name">{{menu.title}}</span>
+            <span  fxFlex></span>
+            <md-icon  class="icon mat-icon material-icons" role="img" aria-hidden="true">{{menu.icon}}</md-icon>
+            </a>
+    </div>
+
+  </div>
+  <div>
+    <!-- <small>version 0.0.1</small> -->
+  </div>

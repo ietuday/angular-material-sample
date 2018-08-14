@@ -1,0 +1,112 @@
+<div fxLayout="column" fxFlex class="student-list-container">
+  <div fxLayoutAlign="end">
+    <button routerLink="register" class="add-floating-button" md-fab><md-icon class="md-24">add</md-icon></button>
+  </div>
+  <div fxLayout="row" class="filter-container">
+    <div fxLayoutAlign="center center">
+      <md-icon>search</md-icon>
+    </div>
+    <input type="text" (keyup)="onSearchKeyUp($event.target.value)" fxFlex class="search-input" placeholder="Search By Name">
+    <div class="student-filter" fxLayoutAlign="center center">
+      <md-select fxFlex name="student" [value]="1" [(ngModel)]="selectedStatus">
+        <md-option [value]="1" (click)="onFilterStudent(selectedStatus)">
+          All Students
+        </md-option>
+        <md-option [value]="0" (click)="onFilterStudent(selectedStatus)">
+          Only Active
+        </md-option>
+        <md-option [value]="2" (click)="onFilterStudent(selectedStatus)">
+          Only Archived
+        </md-option>
+      </md-select>
+    </div>
+  </div>
+
+  <div fxflex>
+    <md-table #table [dataSource]="studentsDataSource">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- image Column -->
+      <ng-container mdColumnDef="simage">
+        <md-header-cell fxFlex="100px" *mdHeaderCellDef>
+        </md-header-cell>
+        <md-cell fxFlex="80px" *mdCellDef="let student;">
+          <img width="40px" [src]="student.photoId?'api/v1/resources/'+student.photoId:'assets/images/noavatar.png'">
+        </md-cell>
+      </ng-container>
+
+      <!-- SN Column -->
+      <ng-container mdColumnDef="sno">
+        <md-header-cell *mdHeaderCellDef>
+          <div fxLayout="row" fxLayoutAlign="start start"><strong>IN</strong></div>
+        </md-header-cell>
+        <md-cell *mdCellDef="let student;let i = index" fxLayout="end end" fxFlexOffset="1.5"> {{student.studentIdentificationNumber}} </md-cell>
+      </ng-container>
+
+      <!-- First Name Column -->
+      <ng-container mdColumnDef="firstName">
+        <md-header-cell *mdHeaderCellDef> <strong>First Name</strong> </md-header-cell>
+        <md-cell *mdCellDef="let student"> {{student.firstName}} </md-cell>
+      </ng-container>
+
+      <!-- Last Name Column -->
+      <ng-container mdColumnDef="lastName">
+        <md-header-cell *mdHeaderCellDef> <strong>Last Name</strong> </md-header-cell>
+        <md-cell *mdCellDef="let student"> {{student.lastName}} </md-cell>
+      </ng-container>
+
+      <!-- Email Id Column -->
+      <ng-container mdColumnDef="emailId">
+        <md-header-cell *mdHeaderCellDef> <strong>Email Id</strong> </md-header-cell>
+        <md-cell *mdCellDef="let student"> {{student.emailId}} </md-cell>
+      </ng-container>
+
+      <!-- Admission Date Column -->
+      <ng-container mdColumnDef="admissionDate">
+        <md-header-cell *mdHeaderCellDef><strong> Admission Date</strong> </md-header-cell>
+        <md-cell *mdCellDef="let student"> {{student.admissionDate | date: 'dd/MM/yyyy'}} </md-cell>
+      </ng-container>
+
+      <!-- Status Column -->
+      <ng-container mdColumnDef="status">
+        <md-header-cell *mdHeaderCellDef> <strong>Status</strong> </md-header-cell>
+        <md-cell *mdCellDef="let student"> {{statuses[student.status]}}</md-cell>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container mdColumnDef="action">
+        <md-header-cell *mdHeaderCellDef> <strong>Action</strong> </md-header-cell>
+        <md-cell *mdCellDef="let student">
+
+          <span mdTooltip="View" *ngIf="student.status == '1' || student.status == '2'">          
+            <button md-icon-button color="primary" [routerLink]="['/students',student.id,'details']">
+            <md-icon class="md-24">remove_red_eye</md-icon>
+            </button>
+          </span>
+
+          <span mdTooltip="Complete Registration" *ngIf="student.status == '0'">          
+              <button md-icon-button color="primary" [routerLink]="['/students/register',student.id]">
+              <md-icon class="md-24" >border_color</md-icon>
+              </button>
+          </span>
+
+          <span mdTooltip="Archive">
+          <button md-icon-button color="warn">
+                  <md-icon class="md-24" (click)="onArchiveStudent(student)">delete</md-icon>
+          </button>
+        </span>
+        </md-cell>
+      </ng-container>
+
+      <md-header-row *mdHeaderRowDef="studentTableColumns"></md-header-row>
+      <md-row *mdRowDef="let row; columns: studentTableColumns;"></md-row>
+    </md-table>
+  </div>
+
+  <div fxLayout="row" *ngIf="totalCount!==0" fxLayoutGap="75" fxLayoutAlign="end">
+  </div>
+
+
+</div>

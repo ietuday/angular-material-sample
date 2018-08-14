@@ -1,0 +1,20 @@
+<md-tab-group [selectedIndex]="selectedTabIndex">
+  <md-tab label="Personal Information">
+    <erp-student-personal (changeTab)="onChangeTab($event)" (getStudentId)="getStudentId($event)"></erp-student-personal>
+    <!--[studentId]="studentId"-->
+  </md-tab>
+
+  <md-tab label="Guardian Information" [disabled]="!studentId">
+    <erp-student-guardian (changeTab)="onChangeTab($event)" [studentId]="studentId"></erp-student-guardian>
+  </md-tab>
+
+  <md-tab label="Qualification" [disabled]="!studentId">
+    <erp-student-qualification (changeTab)="onChangeTab($event)" [studentId]="studentId"> </erp-student-qualification>
+  </md-tab>
+
+  <md-tab label="Documents">
+    <erp-student-documents [studentId]="studentId">
+    </erp-student-documents>
+  </md-tab>
+
+</md-tab-group>

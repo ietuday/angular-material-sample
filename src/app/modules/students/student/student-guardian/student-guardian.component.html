@@ -1,0 +1,223 @@
+<form [formGroup]="Guardian1Form">
+  <div fxLayout="row" fxLayoutAlign="center center" class="tab-content">
+    <div fxFlex="85">
+      <label><h3>Guardian 1 *</h3></label>
+      <div fxLayout="row" fxLayoutGap="4%">
+
+        <div fxLayout="column" fxFlex>
+
+          <div class="buttom-space">
+            <md-select placeholder="Relationship Type" required fxFlex="100" tabindex="1" formControlName="relationship">
+              <md-option value="Father"> Father</md-option>
+              <md-option value="Mother"> Mother</md-option>
+              <md-option value="Uncle"> Uncle</md-option>
+            </md-select>
+          </div>
+
+          <div>
+            <md-input-container fxFlex>
+              <input mdInput placeholder="Last Name" required tabindex="3" formControlName="lastName">
+            </md-input-container>
+          </div>
+
+          <div>
+            <md-input-container fxFlex>
+              <input mdInput type="number" placeholder="Phone Number 2" tabindex="5" formControlName="officePhoneNumber">
+            </md-input-container>
+          </div>
+          <div>
+            <md-checkbox class="example-margin" tabindex="7" fxFlex formControlName="sameAsStudentAddress" (click)="onSameAddressClick()">Same as Student Address</md-checkbox>
+          </div>
+
+          <div *ngIf="!isSameAddress">
+            <md-input-container fxFlex>
+              <input mdInput placeholder="Address Line 1" tabindex="8" formControlName="primaryAddress">
+            </md-input-container>
+          </div>
+
+          <div class="buttom-space" *ngIf="!isSameAddress">
+            <md-select placeholder="City" fxFlex="100" tabindex="10" formControlName="city">
+              <md-option *ngFor="let city of cities" value={{city.text}}>
+                {{city.text}}
+              </md-option>
+            </md-select>
+          </div>
+
+          <div *ngIf="!isSameAddress">
+            <md-input-container fxFlex>
+              <input type="number" mdInput placeholder="Postal Code" tabindex="12" formControlName="postalCode">
+            </md-input-container>
+          </div>
+
+        </div>
+        <!--Guardian 1  first column end -->
+
+
+        <div fxLayout="column" fxFlex>
+          <div>
+            <md-input-container fxFlex>
+              <input mdInput placeholder="First Name" required tabindex="2" formControlName="firstName">
+            </md-input-container>
+          </div>
+
+          <div>
+            <md-input-container fxFlex>
+              <input mdInput type="number" placeholder="Phone Number" required tabindex="4" formControlName="phoneNumber">
+            </md-input-container>
+          </div>
+
+          <div>
+            <md-input-container fxFlex>
+              <input mdInput placeholder="Email" tabindex="6" formControlName="email">
+            </md-input-container>
+          </div>
+
+          <div fxFlex>
+
+          </div>
+
+          <div>
+            <md-input-container fxFlex *ngIf="!isSameAddress">
+              <input mdInput placeholder="Address Line 2" tabindex="9" formControlName="secondaryAddress">
+            </md-input-container>
+          </div>
+
+          <div class="buttom-space" *ngIf="!isSameAddress">
+            <md-select placeholder="State" fxFlex="100" tabindex="11" formControlName="state">
+              <md-option *ngFor="let state of states" value={{state.text}}>
+                {{state.text}}
+              </md-option>
+            </md-select>
+          </div>
+
+          <div>
+            <md-input-container fxFlex *ngIf="!isSameAddress">
+              <input mdInput placeholder="Notes (If any)" tabindex="13" formControlName="note">
+            </md-input-container>
+          </div>
+
+
+
+        </div>
+
+        <!--Guardian 1  second column end -->
+
+      </div>
+    </div>
+
+
+  </div>
+</form>
+
+<br>
+<hr>
+<form [formGroup]="Guardian2Form">
+  <div fxLayout="row" fxLayoutAlign="center center" class="tab-content">
+    <div fxFlex="85">
+      <label><h3>Guardian 2</h3></label>
+      <div fxLayout="row" fxLayoutGap="4%">
+
+        <div fxLayout="column" fxFlex>
+
+          <div class="buttom-space">
+            <md-select placeholder="Relationship Type" fxFlex="100" tabindex="14" formControlName="relationship">
+              <md-option value="Father"> Father</md-option>
+              <md-option value="Mother"> Mother</md-option>
+              <md-option value="Uncle"> Uncle</md-option>
+            </md-select>
+          </div>
+
+          <div>
+            <md-input-container fxFlex>
+              <input mdInput placeholder="Last Name" tabindex="16" formControlName="lastName">
+            </md-input-container>
+          </div>
+
+          <div>
+            <md-input-container fxFlex>
+              <input mdInput type="number" placeholder="Office Phone Number" tabindex="18" formControlName="officePhoneNumber">
+            </md-input-container>
+          </div>
+          <div>
+            <md-checkbox class="example-margin" tabindex="20" fxFlex formControlName="sameAsStudentAddress" (click)="onSameAddressClick2()">Same as Student Address</md-checkbox>
+          </div>
+
+          <div *ngIf="!isSameAddress2">
+            <md-input-container fxFlex>
+              <input mdInput placeholder="Address Line 1" tabindex="21" formControlName="primaryAddress">
+            </md-input-container>
+          </div>
+
+          <div class="buttom-space" *ngIf="!isSameAddress2">
+            <md-select placeholder="City" fxFlex="100" tabindex="23" formControlName="city">
+              <md-option *ngFor="let city of cities" value={{city.text}}>
+                {{city.text}}
+              </md-option>
+            </md-select>
+          </div>
+
+          <div *ngIf="!isSameAddress2">
+            <md-input-container fxFlex>
+              <input type="number" mdInput placeholder="Postal Code" tabindex="25" formControlName="postalCode">
+            </md-input-container>
+          </div>
+
+        </div>
+        <!-- Guardian 2 first column end -->
+
+
+        <div fxLayout="column" fxFlex>
+          <div>
+            <md-input-container fxFlex>
+              <input mdInput placeholder="First Name" tabindex="15" formControlName="firstName">
+            </md-input-container>
+          </div>
+
+          <div>
+            <md-input-container fxFlex>
+              <input mdInput type="number" placeholder="Phone Number" tabindex="17" formControlName="phoneNumber">
+            </md-input-container>
+          </div>
+
+          <div>
+            <md-input-container fxFlex>
+              <input mdInput placeholder="Email" tabindex="19" formControlName="email">
+            </md-input-container>
+          </div>
+
+          <div fxFlex>
+
+          </div>
+
+          <div>
+            <md-input-container fxFlex *ngIf="!isSameAddress2">
+              <input mdInput placeholder="Address Line 2" tabindex="22" formControlName="secondaryAddress">
+            </md-input-container>
+          </div>
+
+          <div class="buttom-space" *ngIf="!isSameAddress2">
+            <md-select placeholder="State" fxFlex="100" tabindex="24" formControlName="state">
+              <md-option *ngFor="let state of states" value={{state.text}}>
+                {{state.text}}
+              </md-option>
+            </md-select>
+          </div>
+
+          <div *ngIf="!isSameAddress2">
+            <md-input-container fxFlex>
+              <input mdInput placeholder="Notes (If any)" tabindex="26" formControlName="note">
+            </md-input-container>
+          </div>
+
+        </div>
+        <!--Guardian 2  second column end -->
+
+      </div>
+      <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="end">
+        <button md-raised-button color="accent" [disabled]="!Guardian1Form.valid && Guardian2Form.valid" (click)="onNextTab()">Save & Continue</button>
+      </div>
+    </div>
+
+
+  </div>
+</form>

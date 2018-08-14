@@ -1,0 +1,29 @@
+.tab-content {
+  margin: 30px 30px;
+}
+
+.img-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  border: solid 3px #fff;
+  box-shadow: 0 0 3px 2px #ccc;
+  font-size: 20;
+}
+
+input[type="file"] {
+  height: 150px;
+  width: 150px;
+  z-index: 966;
+  opacity: 0 !important;
+  display: block;
+  margin-left: 25%
+}
+
+.radio-button-space {
+  margin-top: 24px;
+}
+
+.buttom-space {
+  margin-bottom: 20px;
+}

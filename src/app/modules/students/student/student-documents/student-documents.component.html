@@ -1,0 +1,37 @@
+<div fxLayout="column">
+  <div fxLayoutAlign="center center" fxLayout="row" fxLayoutWrap>
+    <div fxFlex="95" fxLayoutAlign="center center" fxLayoutWrap class="file-drop-zone" [dropzone]="config" (success)="onUploadSuccess($event)">
+    </div>
+  </div><br><br>
+  <div>
+    <table>
+      <thead>
+        <th class="td-width">Document Name</th>
+        <th>Uploaded On</th>
+        <th>Action</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let document of allDocuments">
+          <td class="td-width">{{document.name}}</td>
+          <td>{{document.uploadedOn}}</td>
+          <td>
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <a md-icon-button color="accent" target="blank" (click)="viewDocument(document)" [attr.href]="viewDocumentUrl" mdTooltip="View">
+                <md-icon>visibility</md-icon>
+              </a>
+              <button md-icon-button color="accent" mdTooltip="Delete" (click)="openDialog(document)"><md-icon>delete</md-icon></button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table><br>
+    <div fxLayoutAlign="center center" *ngIf="allDocuments.length < 1">
+      <md-icon color="warn">warning</md-icon>&nbsp;
+      <h5>No documents added.</h5>
+    </div>
+  </div>
+  <div fxLayoutAlign="end" style="margin-right:20px" *ngIf="allDocuments.length > 0">
+    <button md-raised-button color="accent">COMPLETE ADMISSION</button>
+  </div>
+  <br><br>
+</div>

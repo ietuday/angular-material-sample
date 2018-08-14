@@ -1,0 +1,29 @@
+// @import './../../../core/styles/vendors.scss';
+
+.file-drop-zone {
+  border-width: 2px;
+  border-style: dashed;
+  border-color: rgb(0, 135, 247);
+  border-image: initial;
+  border-radius: 5px;
+  background: white; // Note set variable from vendors
+  margin-top: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  width:100%;
+}
+
+
+
+td,th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+
+.td-width {
+  width: 385px;
+}

@@ -1,0 +1,205 @@
+<form [formGroup]="studentForm">
+    <div fxLayout="row" fxLayoutAlign="center center" class="tab-content">
+      <div fxFlex="99">
+        <div fxLayout="row" fxLayoutGap="2%">
+          <div fxLayout="column" fxFlex fxLayoutAlign="start center" flex-offset="20">
+            <img class="img-circle" src="assets/images/noavatar.png" alt="Select profile Image" />
+            <!-- <input type="file" name="profile_img" required (change)="fileChange(input)" #input /> -->
+          </div>
+          <div fxLayout="column" fxFlex="42">
+            <div>
+              <md-input-container fxFlex>
+                <input mdInput name="firstName" placeholder="First Name" required formControlName="firstName" tabindex="1">
+              </md-input-container>
+            </div>
+
+
+            <div class="buttom-space">
+              <!-- <md-radio-group name="genderRadio" fxFlex formControlName="genderRadio" required>
+                <md-radio-button value="M" selected tabindex=5>Male</md-radio-button>
+                <md-radio-button value="F" tabindex=6>Female</md-radio-button>
+              </md-radio-group> -->
+              <md-select placeholder="Gender" name="gender" tabindex="3" fxFlex="100" formControlName="gender" required>
+                <md-option value="Male">Male</md-option>
+                <md-option value="Female">Female</md-option>
+              </md-select>
+            </div>
+
+            <div class="buttom-space">
+              <md-select placeholder="Category" name="category" fxFlex="100" formControlName="category" tabindex="5" required>
+                <md-option *ngFor="let category of categories" value={{category.text}}>
+                  {{category.text}}
+                </md-option>
+              </md-select>
+            </div>
+
+            <div>
+              <md-input-container fxFlex>
+                <input mdInput name="fathersName" placeholder="Father Name" formControlName="fathersName" tabindex="7" required>
+              </md-input-container>
+            </div>
+
+            <div>
+              <md-input-container fxFlex>
+                <input mdInput tabindex="9" name="nationality" placeholder="Nationality" formControlName="nationality" required>
+              </md-input-container>
+            </div>
+
+            <div class="buttom-space">
+              <md-select placeholder="Cast" name="caste" fxFlex="100" formControlName="caste" tabindex="11">
+                <md-option *ngFor="let cast of casts" value={{cast.text}}>
+                  {{cast.text}}
+                </md-option>
+              </md-select>
+            </div>
+
+            <div>
+              <md-input-container fxFlex>
+                <input type="number" mdInput name="phone" required placeholder="PhoneNumber" formControlName="phone" tabindex="13">
+              </md-input-container>
+            </div>
+
+            <div class="buttom-space radio-button-space">
+              Physically Handicapped :&nbsp;
+              <md-radio-group name="physicallyHandicapped" fxFlex formControlName="physicallyHandicapped" required >
+                <md-radio-button value="true" selected tabindex="15">Yes</md-radio-button>
+                <md-radio-button value="false" tabindex="15">No</md-radio-button>
+              </md-radio-group>
+            </div>
+
+            <div class="buttom-space radio-button-space">
+              Minority :&nbsp;
+              <md-radio-group name="minority" fxFlex formControlName="minority" required>
+                <md-radio-button value="true" selected tabindex="17" >Yes</md-radio-button>
+                <md-radio-button value="false" tabindex="17" >No</md-radio-button> &nbsp; (Note: If Yes Specify)
+              </md-radio-group>
+            </div>
+
+            <div class="radio-button-space">
+              <md-input-container fxFlex>
+                <input type="number" mdInput tabindex="21" name="adharCardNo" minlength="16" maxlength="13" required placeholder="Adhar Card Number"
+                  formControlName="adharCardNo">
+              </md-input-container>
+            </div>
+
+            <div>
+              <md-input-container fxFlex>
+                <textarea mdInput placeholder="Address 2" formControlName="secondaryAddress" tabindex="23"></textarea>
+              </md-input-container>
+            </div>
+
+            <div>
+              <md-select placeholder="State" name="state" required fxFlex="100" formControlName="state" tabindex="25" required>
+                <md-option *ngFor="let state of states" value={{state.text}}>
+                  {{state.text}}
+                </md-option>
+              </md-select>
+            </div>
+
+            <div class="radio-button-space">
+              <md-input-container fxFlex>
+                <input mdInput placeholder="Admission Date" name="admissionDate" required [mdDatepicker]="admmissionDate" formControlName="admissionDate"
+                  tabindex="27" fxFlex>
+                <md-datepicker-toggle mdSuffix [for]="admmissionDate"></md-datepicker-toggle>
+                <md-datepicker #admmissionDate></md-datepicker>
+              </md-input-container>
+            </div>
+
+          </div>
+
+
+          <div fxLayout="column" fxFlex="42">
+            <div>
+              <md-input-container fxFlex>
+                <input mdInput name="lastName" placeholder="Last Name" formControlName="lastName" tabindex="2" required>
+              </md-input-container>
+            </div>
+
+            <div>
+              <md-input-container fxFlex>
+                <input mdInput placeholder="Date of Birth" name="dateOfBirth" [mdDatepicker]="dob" formControlName="dateOfBirth" tabindex="4" required>
+                <md-datepicker-toggle mdSuffix [for]="dob"></md-datepicker-toggle>
+                <md-datepicker #dob></md-datepicker>
+              </md-input-container>
+            </div>
+
+
+
+            <div class="buttom-space">
+              <md-select placeholder="Religion" name="religion" fxFlex="100" formControlName="religion" tabindex="6" required>
+                <md-option *ngFor="let religion of religions" value={{religion.text}}>
+                  {{religion.text}}
+                </md-option>
+              </md-select>
+            </div>
+
+            <div>
+              <md-input-container fxFlex>
+                <input mdInput name="mothersName" placeholder="Mother Name" formControlName="mothersName" tabindex="8">
+              </md-input-container>
+            </div>
+
+            <div>
+              <md-input-container fxFlex>
+                <input mdInput name="domicile" placeholder="Domacile" formControlName="domicile" tabindex="10" required>
+              </md-input-container>
+            </div>
+
+            <div>
+              <md-input-container fxFlex>
+                <input mdInput name="birthPlace" placeholder="BirthPlace" formControlName="birthPlace" tabindex="12" required>
+              </md-input-container>
+            </div>
+
+            <div>
+              <md-input-container fxFlex>
+                <input type="email" mdInput name="emailId" placeholder="Email Id" formControlName="emailId" tabindex="14">
+              </md-input-container>
+            </div>
+
+
+            <div class="buttom-space">
+              <md-select placeholder="Blood Group" name="bloodGroup" fxFlex="100" formControlName="bloodGroup" tabindex="16">
+                <md-option *ngFor="let bloodGroup of bloodGroups" value={{bloodGroup.text}}>
+                  {{bloodGroup.text}}
+                </md-option>
+              </md-select>
+            </div>
+
+            <div>
+              <md-input-container fxFlex>
+                <input mdInput name="minorityType" placeholder="Minority Type" formControlName="minorityType" tabindex="18">
+              </md-input-container>
+            </div>
+
+            <div>
+              <md-input-container fxFlex>
+                <textarea mdInput placeholder="Address 1" formControlName="primaryAddress" tabindex="22" required></textarea>
+              </md-input-container>
+            </div>
+
+            <div class="radio-button-space">
+              <md-select placeholder="City" name="city" required fxFlex="100" formControlName="city" tabindex="24" required>
+                <md-option *ngFor="let city of cities" value={{city.text}}>
+                  {{city.text}}
+                </md-option>
+              </md-select>
+            </div>
+
+            <div class="radio-button-space">
+              <md-input-container fxFlex>
+                <input type="number" mdInput name="postalCode" placeholder="Postal Code (PIN Code)" formControlName="postalCode" required
+                  tabindex="26" fxFlex>
+              </md-input-container>
+            </div>
+
+          </div>
+
+        </div>
+        <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="end">
+          <button md-raised-button (click)="onNextTab()" color="accent" type="submit" [disabled]="!studentForm.valid">SAVE & Continue</button>
+          <button md-raised-button color="accent" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </form>

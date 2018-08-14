@@ -1,0 +1,224 @@
+<div class="studentDetails">
+  <div class="studentDetailContent">
+    <div>
+      <br>
+      <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="7%">
+        <div class="studentPhoto" fxLayout="column" fxFlex="15" fxLayoutGap="7%">
+          <erp-image-upload></erp-image-upload>
+          <div fxLayout="column">
+            <strong>IDENTIFICATION NUMBER</strong>
+            <div fxLayoutAlign="center">
+              <h2>{{student.studentIdentificationNumber}}</h2>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="column" fxFlex="20" fxLayoutGap="25px">
+          <div>
+            <div><strong> First Name :</strong></div>
+            <div> {{student.firstName}}</div>
+          </div>
+
+          <div>
+            <div><strong>Date of birth :</strong></div>
+            <div>{{student.dateOfBirth | date: 'dd/MM/yyyy'}}</div>
+          </div>
+
+          <div>
+            <div><strong>Father's Name :</strong></div>
+            <div>{{student.fathersName}}</div>
+          </div>
+
+          <div>
+            <div><strong>Address Line1 :</strong></div>
+            <div>{{student.primaryAddress}}</div>
+          </div>
+
+          <div>
+            <div><strong>Address 2 :</strong></div>
+            <div>{{student.secondaryAddress}}</div>
+          </div>
+
+          <div>
+            <div><strong>Gender :</strong> </div>
+            <div>{{student.gender}}</div>
+          </div>
+
+          <div>
+            <div><strong>Aadhar Card :</strong></div>
+            <div>{{student.adharCardNo}}</div>
+          </div>
+
+
+
+        </div>
+        <div fxLayout="column" fxFlex="20" fxLayoutGap="25px">
+          <div>
+            <div><strong>Last Name :</strong> </div>
+            <div>{{student.lastName}}</div>
+          </div>
+
+          <div>
+            <div><strong>Religion :</strong></div>
+            <div> {{student.religion}}</div>
+          </div>
+
+          <div>
+            <div><strong>Mother's Name :</strong></div>
+            <div> {{student.mothersName}}</div>
+          </div>
+
+          <div>
+            <div><strong>Phone Number :</strong></div>
+            <div>{{student.phone}} </div>
+          </div>
+
+          <div>
+            <div><strong>Blood Group :</strong></div>
+            <div>{{student.bloodGroup}}</div>
+          </div>
+
+          <div>
+            <div><strong>Email ID :</strong></div>
+            <div>{{student.emailId}}</div>
+          </div>
+
+          <div>
+            <div><strong>Admission Date : </strong></div>
+            <div>{{student.admissionDate | date: 'dd/MM/yyyy'}}</div>
+          </div>
+
+        </div>
+        <div fxLayout="column" fxFlex="20" fxLayoutGap="25px">
+
+          <div>
+            <div><strong>Place of birth :</strong></div>
+            <div>{{student.birthPlace}}</div>
+          </div>
+
+          <div>
+            <div><strong>City :</strong> </div>
+            <div>{{student.city}}</div>
+          </div>
+
+          <div>
+            <div><strong>State :</strong></div>
+            <div>{{student.state}}</div>
+          </div>
+
+          <div>
+            <div><strong>Country :</strong></div>
+            <div>{{student.country}}</div>
+          </div>
+
+          <div>
+            <div><strong>Nationality :</strong></div>
+            <div>{{student.nationality}}</div>
+          </div>
+
+          <div>
+            <div><strong>Postal Code :</strong></div>
+            <div>{{student.postalCode}}</div>
+            <!-- <div>&nbsp;</div>
+          <div>&nbsp;</div> -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<div>
+  <md-tab-group>
+    <md-tab label="Guardian">
+      <div fxLayout="column" *ngFor="let guardian of student.guardians; let i = index;">
+        <div>
+          <div fxFlexOffset="2">
+            <h3>Gardian {{i+1}}</h3>
+          </div>
+        </div>
+        <div>
+          <div fxFlexOffset="2" fxFlex>
+            <div fxLayout="row" fxLayoutGap="10%">
+              <div fxLayout="column" fxLayoutGap="4%" fxFlex="50">
+                <div fxFlex><strong>Relationship :</strong>{{guardian.relationship}}</div>
+                <div><strong>Last Name :</strong> {{guardian.lastName}}</div>
+                <div><strong>Phone 2 :</strong> {{guardian.officePhoneNumber}}</div>
+                <div><strong>Address Line 1 :</strong> {{guardian.primaryAddress}}</div>
+                <div><strong>City :</strong> {{guardian.city}}data2</div>
+                <div><strong>Postal Code :</strong> {{guardian.postalCode}}</div>
+              </div>
+              <div fxLayout="column" fxLayoutGap="2%" fxFlex="50">
+                <strong>First Name </strong>
+                <div>{{guardian.firstName}}</div>
+                <strong>Phone No 1 </strong>
+                <div>{{guardian.phoneNumber}}</div>
+                <strong>Email </strong>
+                <div>{{guardian.email}}</div>
+                <strong>Address Line 2 </strong>
+                <div>{{guardian.secondaryAddress}}</div>
+                <strong>State </strong>
+                <div> {{guardian.state}} </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <md-divider></md-divider>
+      </div>
+    </md-tab>
+    <md-tab label="Qualification">
+      <div fxLayout="column" fxFlexOffset="2" *ngFor="let qualification of student.qualifications;let i=index;">
+        <div>
+          <div>
+            <h3><strong>Course :</strong> {{qualification.course}}</h3>
+          </div>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="10%">
+          <div fxLayout="column" fxLayoutGap="4%" fxFlex="50">
+            <div><strong>Year of Passing :</strong> {{qualification.yearOfPassing}}</div>
+            <div><strong>Out of Marks :</strong> {{qualification.totalMarks}}</div>
+            <div><strong>Course Duration :</strong> {{qualification.duration}}</div>
+            <div>&nbsp;</div>
+          </div>
+          <div fxLayout="column" fxLayoutGap="4%" fxFlex="50">
+            <div><strong>School/Board/University :</strong> {{qualification.boardName}}</div>
+            <div><strong>Marks Obtained :</strong> {{qualification.marksObtained}}</div>
+            <div><strong>Percentage :</strong> {{qualification.marksObtained*100/qualification.totalMarks}}</div>
+          </div>
+        </div>
+      </div>
+    </md-tab>
+    <md-tab label="Document Details">
+      <div>
+        <table>
+          <thead>
+            <th class="td-width">Document Name</th>
+            <th>Uploaded On</th>
+            <th>Action</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let document of allDocuments">
+              <td class="td-width">{{document.name}}</td>
+              <td>{{document.uploadedOn}}</td>
+              <td>
+                <div fxLayout="row" fxLayoutAlign="center center">
+                  <a md-icon-button color="accent" target="blank" (click)="viewDocument(document)" [attr.href]="viewDocumentUrl" mdTooltip="View">
+                    <md-icon>visibility</md-icon>
+                  </a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table><br>
+        <div fxLayoutAlign="center center" *ngIf="allDocuments.length < 1">
+          <md-icon color="warn">warning</md-icon>&nbsp;
+          <h5>No documents added.</h5>
+        </div>
+      </div>
+    </md-tab>
+  </md-tab-group>
+</div>

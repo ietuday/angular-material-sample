@@ -1,0 +1,125 @@
+<form [formGroup]="rFormQualification">
+  <div fxLayout="column">
+    <table style="width:100%">
+      <hr>
+      <thead fxLayout="row">
+        <td fxFlex>
+          <div>COURSES</div>
+        </td>
+        <td fxFlex>
+          <div>UNIVERSITY NAME</div>
+        </td>
+        <td fxFlex>
+          <div>PASSING YEAR</div>
+        </td>
+        <td fxFlex>
+          <div>MARKS OBTAINED</div>
+        </td>
+        <td fxFlex>
+          <div>OUT OF MARKS</div>
+        </td>
+        <td fxFlex>
+          <div>PERCENTAGE</div>
+        </td>
+        <td fxFlex>
+          <div>COURSE DURATION</div>
+        </td>
+        <td fxFlex>
+          <div>ACTION</div>
+        </td>
+      </thead>
+      <hr>
+      <tr *ngFor="let qual of qualification" fxLayoutAlign="center center" fxLayout="row">
+        <td>
+          {{qual.course}}
+        </td>
+        <td>
+          {{qual.boardName}}
+        </td>
+        <td>
+          {{qual.yearOfPassing}}
+        </td>
+        <td>
+          {{qual.marksObtained}}
+        </td>
+        <td>
+          {{qual.totalMarks}}
+        </td>
+        <td>
+          {{qual.percentage}}%
+        </td>
+        <td>
+          {{qual.duration}}
+        </td>
+        <td>
+          <button md-icon-button color="accent" (click)="removeItem(qual)" fxFlex><md-icon>delete</md-icon></button>
+        </td>
+      </tr>
+
+
+      <tr fxLayout="row">
+        <td>
+          <md-select placeholder="Course" required class="top-space" formControlName="course">
+            <md-option *ngFor="let course of courses" value={{course.text}}>
+              {{course.text}}
+            </md-option>
+          </md-select>
+        </td>
+        <td>
+          <div>
+            <md-select placeholder="Universities" class="top-space" required formControlName="boardName">
+              <md-option *ngFor="let university of universities" value={{university.text}}>
+                {{university.text}}
+              </md-option>
+            </md-select>
+          </div>
+        </td>
+        <td>
+          <div>
+            <md-select placeholder="Passing Year" class="top-space" required formControlName="yearOfPassing">
+              <md-option *ngFor="let year of years" value={{year.id}}>
+                {{year.text}}
+              </md-option>
+            </md-select>
+          </div>
+        </td>
+        <td>
+          <md-input-container class="buttom-space">
+            <input mdInput type="number" placeholder="Marks Obtained"  required formControlName="marksObtained">
+          </md-input-container>
+        </td>
+        <td>
+          <div>
+            <md-input-container>
+              <input mdInput type="number" (change)="getPercentage()" placeholder="Out of Marks" required formControlName="totalMarks">
+            </md-input-container>
+          </div>
+        </td>
+        <td>
+          <div>
+            <md-input-container>
+              <input mdInput name="percentage" formControlName="percentage" value={{percentage}}% required>
+            </md-input-container>
+          </div>
+        </td>
+        <td>
+          <div>
+            <md-input-container>
+              <input type="number" mdInput placeholder="Course Duration (In Years)" required formControlName="duration">
+            </md-input-container>
+          </div>
+        </td>
+        <td>
+          <button md-icon-button class="top-space" color="accent" (click)="addQualification()" [disabled]="!rFormQualification.valid"><md-icon>add</md-icon></button>
+        </td>
+      </tr>
+
+    </table>
+  </div>
+
+
+  <br>
+  <div class="tab-content" fxLayoutAlign="end">
+    <button md-raised-button (click)="onNextTab()" color="accent" [disabled]="qualification?.length < 1">Save & Continue</button>
+  </div>
+</form>

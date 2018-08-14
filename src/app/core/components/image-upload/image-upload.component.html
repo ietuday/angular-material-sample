@@ -1,0 +1,12 @@
+<div fxLayout="column" >
+
+    <div fxLayout="row" fxLayoutAlign="end" class="md-fab">
+        <button md-mini-fab (click)="selectImage()">
+           <md-icon>add</md-icon>
+        </button>
+    </div>
+
+    <img class="img-circle" src="assets/images/noavatar.png">
+</div>
+
+<input [hidden]="true" #selectedPicture id="custom-input" type="file" (change)="fileChangeListener($event)" accept=".jpeg, .gif,.jpg,.png,.bmp">
